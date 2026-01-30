@@ -73,7 +73,7 @@ class MQTTHandler:
 			self._connected = True
 
 			# discover for homeassistent
-			client.publish(DISCOVER, open("files/discover.json", "r").read(), retain=True)
+			client.publish(DISCOVER, open("files/discovery.json", "r").read(), retain=True)
 
 			# subscribe topics
 			client.subscribe(TARGET_TEMP_SET)
