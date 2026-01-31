@@ -7,7 +7,7 @@ from micropython import const
 
 
 CHECK_INTERVAL = const(1) # seconds
-RECONNECT_INTERVAL = const(60000) # milliseconds
+RECONNECT_INTERVAL = const(30) # seconds
 
 DISCOVER = f"homeassistant/device/{ID}/config"
 STATUS = f"{ID}/status"
