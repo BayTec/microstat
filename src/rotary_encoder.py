@@ -33,8 +33,7 @@ class RotaryEncoder:
  
 		self._clk.irq(trigger=Pin.IRQ_FALLING | Pin.IRQ_RISING,
 					 handler=self._rotary_irq_callback)
-		self._sw.irq(trigger=Pin.IRQ_FALLING, handler=self._button_irq_callback)
-
+		self._sw.irq(trigger=Pin.IRQ_RISING, handler=self._button_irq_callback)
 
 		create_task(self._rotary_flag_listener())
 		create_task(self._button_flag_listener())
