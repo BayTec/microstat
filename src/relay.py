@@ -9,7 +9,7 @@ class Relay:
     _pin: Pin
 
     def __init__(self, pin: int) -> None:
-        self._pin = Pin(pin, Pin.OUT)
+        self._pin = Pin(pin, Pin.OUT, value=1)
         pass
 
     def handle_state_change(self, state: State, delta: list) -> None:
@@ -27,14 +27,14 @@ class Relay:
         pin = self._pin
 
         if mode == HEAT_MODE:
-            pin.on()
+            pin.value(0)
         elif mode == OFF_MODE:
-            pin.off()
+            pin.value(1)
         else:
             if target_temperature > temperature + THRESHOLD:
-                pin.on()
+                pin.value(0)
             elif target_temperature < temperature - THRESHOLD:
-                pin.off()
+                pin.value(1)
 
     def status(self) -> bool:
-        return self._pin.value() > 0
+        return self._pin.value() == 0
